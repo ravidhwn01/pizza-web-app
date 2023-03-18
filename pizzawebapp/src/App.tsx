@@ -1,7 +1,9 @@
+import Home from "./components/Home";
+
 function App() {
   return (
     <>
-      <h1>Pizza Ordering App</h1>
+      <Home />
     </>
   );
 }
