@@ -11,7 +11,7 @@ import {
   Text,
 } from "@chakra-ui/react";
 
-function PizzaBox() {
+function CartBox() {
   return (
     <>
       <Card maxW="sm">
@@ -33,8 +33,8 @@ function PizzaBox() {
         <Divider />
         <CardFooter>
           <ButtonGroup spacing="2">
-            <Button>Buy Now</Button>
-            <Button>Add to Cart</Button>
+            <Button>Buy now</Button>
+            <Button>Delete</Button>
           </ButtonGroup>
         </CardFooter>
       </Card>
@@ -42,4 +42,4 @@ function PizzaBox() {
   );
 }
 
-export default PizzaBox;
+export default CartBox;
