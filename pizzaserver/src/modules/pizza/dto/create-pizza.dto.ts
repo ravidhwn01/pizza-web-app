@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber } from 'class-validator';
+import { IsNotEmpty, isNumber, IsNumber } from 'class-validator';
 
 export class CreatePizzaDto {
   @IsNumber()
@@ -8,4 +8,7 @@ export class CreatePizzaDto {
   @IsNumber()
   @IsNotEmpty()
   pizzaCost: number;
+
+  @IsNumber({}, { each: true })
+  ingredientIds: number[];
 }

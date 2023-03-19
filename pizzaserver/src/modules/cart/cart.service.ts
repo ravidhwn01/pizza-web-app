@@ -1,11 +1,18 @@
 import { Injectable } from '@nestjs/common';
+import { Repository, Sequelize } from 'sequelize-typescript';
+import { CartSchema } from 'src/schemas/cart.schema';
 import { CreateCartDto } from './dto/create-cart.dto';
 import { UpdateCartDto } from './dto/update-cart.dto';
 
 @Injectable()
 export class CartService {
+  private repository: Repository<CartSchema>;
+  constructor(private sequelize: Sequelize) {
+    this.repository = this.sequelize.getRepository(CartSchema);
+  }
+
   create(createCartDto: CreateCartDto) {
-    return 'This action adds a new cart';
+    return this.repository.create(createCartDto);
   }
 
   findAll() {
