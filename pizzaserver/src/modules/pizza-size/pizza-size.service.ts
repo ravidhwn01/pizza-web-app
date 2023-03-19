@@ -1,26 +1,44 @@
 import { Injectable } from '@nestjs/common';
+import { Repository, Sequelize } from 'sequelize-typescript';
+import { PizzaSizeSchema } from 'src/schemas/pizzaSize.schema';
 import { CreatePizzaSizeDto } from './dto/create-pizza-size.dto';
 import { UpdatePizzaSizeDto } from './dto/update-pizza-size.dto';
 
 @Injectable()
 export class PizzaSizeService {
+  private repository: Repository<PizzaSizeSchema>;
+  constructor(private sequelize: Sequelize) {
+    this.repository = this.sequelize.getRepository(PizzaSizeSchema);
+  }
   create(createPizzaSizeDto: CreatePizzaSizeDto) {
-    return 'This action adds a new pizzaSize';
+    return this.repository.create(createPizzaSizeDto);
   }
 
   findAll() {
-    return `This action returns all pizzaSize`;
+    return this.repository.findAll();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} pizzaSize`;
+    return this.repository.findOne({
+      where: {
+        id,
+      },
+    });
   }
 
   update(id: number, updatePizzaSizeDto: UpdatePizzaSizeDto) {
-    return `This action updates a #${id} pizzaSize`;
+    return this.repository.update(updatePizzaSizeDto, {
+      where: {
+        id,
+      },
+    });
   }
 
   remove(id: number) {
-    return `This action removes a #${id} pizzaSize`;
+    return this.repository.destroy({
+      where: {
+        id,
+      },
+    });
   }
 }

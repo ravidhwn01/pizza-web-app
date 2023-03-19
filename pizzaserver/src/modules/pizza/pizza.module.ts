@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
-import { PizzaController } from './pizza.controller';
 import { PizzaService } from './pizza.service';
+import { PizzaController } from './pizza.controller';
 
 @Module({
   controllers: [PizzaController],

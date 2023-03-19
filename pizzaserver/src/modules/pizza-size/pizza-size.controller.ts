@@ -1,9 +1,17 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Patch,
+  Param,
+  Delete,
+} from '@nestjs/common';
 import { PizzaSizeService } from './pizza-size.service';
 import { CreatePizzaSizeDto } from './dto/create-pizza-size.dto';
 import { UpdatePizzaSizeDto } from './dto/update-pizza-size.dto';
 
-@Controller('pizza-size')
+@Controller('pizzasize')
 export class PizzaSizeController {
   constructor(private readonly pizzaSizeService: PizzaSizeService) {}
 
@@ -23,7 +31,10 @@ export class PizzaSizeController {
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePizzaSizeDto: UpdatePizzaSizeDto) {
+  update(
+    @Param('id') id: string,
+    @Body() updatePizzaSizeDto: UpdatePizzaSizeDto,
+  ) {
     return this.pizzaSizeService.update(+id, updatePizzaSizeDto);
   }
 
