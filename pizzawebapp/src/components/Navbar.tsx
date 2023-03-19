@@ -1,14 +1,19 @@
-import { Flex, Link, Spacer } from "@chakra-ui/react";
+import { Button, Flex, Spacer } from "@chakra-ui/react";
+import { Link } from "react-router-dom";
 
 function Navbar() {
   return (
     <>
       <Flex direction={"row"} justifyContent="center" p={12} mx="10px">
-        <Link href="/">Home</Link>
+        <Link to="/">Home</Link>
         <Spacer />
-        <Link href="/carts">Cart</Link>
+        <Link to="/carts">Cart</Link>
         <Spacer />
-        <Link href="/allorders">All Orders</Link>
+        <Link to="/allorders">All Orders</Link>
+        <Spacer />
+        <Link to="/signup">Sign up</Link>
+        <Spacer />
+        <Link to="/login">Login</Link>
       </Flex>
     </>
   );
