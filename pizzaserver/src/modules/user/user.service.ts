@@ -1,26 +1,44 @@
 import { Injectable } from '@nestjs/common';
+import { Repository, Sequelize } from 'sequelize-typescript';
+import { UserSchema } from 'src/schemas/user.schema';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
 
 @Injectable()
 export class UserService {
+  private repository: Repository<UserSchema>;
+  constructor(private sequelize: Sequelize) {
+    this.repository = this.sequelize.getRepository(UserSchema);
+  }
   create(createUserDto: CreateUserDto) {
-    return 'This action adds a new user';
+    return this.repository.create(createUserDto);
   }
 
   findAll() {
-    return `This action returns all user`;
+    return this.repository.findAll();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} user`;
+    return this.repository.findOne({
+      where: {
+        id,
+      },
+    });
   }
 
   update(id: number, updateUserDto: UpdateUserDto) {
-    return `This action updates a #${id} user`;
+    return this.repository.update(updateUserDto, {
+      where: {
+        id,
+      },
+    });
   }
 
   remove(id: number) {
-    return `This action removes a #${id} user`;
+    return this.repository.destroy({
+      where: {
+        id,
+      },
+    });
   }
 }
