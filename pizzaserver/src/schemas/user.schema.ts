@@ -9,6 +9,9 @@ export class UserSchema extends Model<IUser> {
   userName: string;
 
   @Column
+  email: string;
+
+  @Column
   password: string;
 
   @HasMany(() => CartSchema)

@@ -12,7 +12,7 @@ export class CartService {
   }
 
   create(createCartDto: CreateCartDto) {
-    return this.repository.create(createCartDto as any);
+    return this.repository.create(createCartDto);
   }
 
   findAll() {
