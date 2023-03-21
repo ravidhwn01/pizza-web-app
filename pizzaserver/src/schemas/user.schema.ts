@@ -1,9 +1,10 @@
 import { Column, HasMany, Model, Table } from 'sequelize-typescript';
+import { IUser } from 'src/interfaces/user.interface';
 import { CartSchema } from './cart.schema';
 import { OrderSchema } from './order.schema';
 
 @Table
-export class UserSchema extends Model {
+export class UserSchema extends Model<IUser> {
   @Column
   userName: string;
 
