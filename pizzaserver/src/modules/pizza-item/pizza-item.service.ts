@@ -35,18 +35,28 @@ export class PizzaItemService {
   }
 
   findAll() {
-    return `This action returns all pizzaItem`;
+    return this.repository.findAll();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} pizzaItem`;
+    return this.repository.findOne({
+      where: {
+        id,
+      },
+    });
   }
 
   update(id: number, updatePizzaItemDto: UpdatePizzaItemDto) {
-    return `This action updates a #${id} pizzaItem`;
+    return this.repository.update(updatePizzaItemDto, {
+      where: { id },
+    });
   }
 
   remove(id: number) {
-    return `This action removes a #${id} pizzaItem`;
+    return this.repository.destroy({
+      where: {
+        id,
+      },
+    });
   }
 }

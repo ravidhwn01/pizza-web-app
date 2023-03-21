@@ -16,18 +16,30 @@ export class CartService {
   }
 
   findAll() {
-    return `This action returns all cart`;
+    return this.repository.findAll();
   }
 
   findOne(id: number) {
-    return `This action returns a #${id} cart`;
+    return this.repository.findOne({
+      where: {
+        id,
+      },
+    });
   }
 
   update(id: number, updateCartDto: UpdateCartDto) {
-    return `This action updates a #${id} cart`;
+    return this.repository.update(updateCartDto, {
+      where: {
+        id,
+      },
+    });
   }
 
   remove(id: number) {
-    return `This action removes a #${id} cart`;
+    return this.repository.destroy({
+      where: {
+        id,
+      },
+    });
   }
 }
